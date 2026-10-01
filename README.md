@@ -2,19 +2,17 @@
 
 ## Overview
 
-This project detects anomalies in a nitrate time series using a threshold-based
-method with fixed-size, overlapping sliding windows.
+This project detects anomalies in a nitrate time series using a threshold-based method with fixed-size, overlapping sliding windows.
 
-The dataset that was used is:
+The dataset used is:
 
 `AG_NO3_fill_cells_remove_NAN.csv`
 
-This dataset was given along with the assignment.
+This dataset was provided with the assignment.
 
-From this dataset, one can see that the nitrate values are stored in the `NO3N` column, and the ground truth anomaly labels are stored in the `Student_Flag` column.
+In this dataset, the nitrate values are stored in the `NO3N` column, and the ground-truth anomaly labels are stored in the `Student_Flag` column.
 
-The goal for this program is to classify nitrate observations as either normal or anomalous
-using an adaptive percentile threshold.
+The goal of this program is to classify nitrate observations as either normal or anomalous using an adaptive percentile threshold.
 
 ## Method
 
@@ -27,11 +25,10 @@ The parameters used were:
 - Step size: `1`
 - Threshold type: one-sided upper-tail
 
-For the first window, which contains the first 500 observations, the threshold was calculated using the following code:
+For the first window, which contains the first 500 observations, the threshold was calculated using:
 
 ```python
 np.percentile(x[0:500], 91, method="linear")
-
 ```
 
 All 500 observations in the first window were classified using this threshold.
@@ -96,8 +93,6 @@ The provided dataset was already cleaned. The program checks the `NO3N` column f
 
 For the first window, all 500 observations were classified using the first threshold. For every window after the first one, the threshold was recalculated and only the newly added point was classified.
 
-The program also creates `sliding_window_predictions.csv`, which contains the calculated threshold and predicted anomaly label for each observation.
-
 ## Files
 
 The main files for this assignment are:
@@ -106,4 +101,4 @@ The main files for this assignment are:
 - `README.md`
 - `anomaly_detection_plot.png`
 
-The Python script loads the dataset, performs the sliding-window anomaly detection, calculates the evaluation metrics, creates the anomaly detection figure, and saves the prediction results.
+The Python script loads the dataset, performs the sliding-window anomaly detection, calculates the evaluation metrics, and creates the anomaly detection figure.
