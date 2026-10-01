@@ -42,6 +42,8 @@ While the false positive count is noticeable, it's expected given the heavy clas
 ## Plot
 The visual comparison (`anomaly_detection_plot.png`) shows the raw nitrate time series line overlaid with predicted anomalies (circles) against the ground-truth flags (X markers). 
 
+![Anomaly Detection Plot](anomaly_detection_plot.png)
+
 ## Design Choices & Code
 - **Upper-tail cutoff:** Focused strictly on high-end spikes since environmental nitrate contamination is characterized by high concentrations.
 - **Data prep:** The script verifies missing values in `NO3N` before starting the sliding loop.
